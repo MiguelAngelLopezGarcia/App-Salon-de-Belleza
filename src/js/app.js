@@ -59,13 +59,15 @@ function mostrarSeccion () {
 
 async function mostrarServicios () {
     try {
-        const resultado = await fetch('./servicios.json');
+        const url = 'http://localhost:3000/servicios.php'
+
+        const resultado = await fetch(url);
         const db = await resultado.json();
 
-        const {servicios} = db;
+        // const {servicios} = db;
 
         // Generar HTML
-        servicios.forEach( servicio => {
+        db.forEach( servicio => {
             const { id, nombre, precio } = servicio;
 
             const nombreServicio = document.createElement('P');
